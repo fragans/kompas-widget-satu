@@ -73,12 +73,13 @@ interface ApiResult {
   "createddate": string,
   "tanggal": string
 }
-// this is `type-based declaration`
+
+// this is syntax named: `type-based declaration`
 const props = defineProps<{
   data: ApiResult
 }>()
 
-const apiHost = 'https://www.kompas.id'
+const apiHost = import.meta.env.SECRET_WWW_HOST
 const updateTime = useDateFormat(props.data.modifieddate ,'d MMMM YYYY HH:mm', { locales: 'id' })
 const error = ref({})
 
