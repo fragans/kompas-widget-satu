@@ -56,7 +56,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import { useDateFormat } from '@vueuse/core'
 interface ApiResult {
   "id": number,
@@ -77,7 +77,6 @@ interface ApiResult {
 const props = defineProps<{
   data: ApiResult
 }>()
-console.log({data:props.data});
 
 const apiHost = 'https://www.kompas.id'
 const updateTime = useDateFormat(props.data.modifieddate ,'d MMMM YYYY HH:mm', { locales: 'id' })
