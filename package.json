@@ -10,7 +10,16 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/tailwind": "^5.0.0",
     "@astrojs/vercel": "^5.0.0",
-    "astro": "^3.1.0"
+    "@astrojs/vue": "^3.0.0",
+    "astro": "^3.1.0",
+    "date-fns": "^2.30.0",
+    "date-fns-tz": "^2.0.0",
+    "tailwindcss": "^3.3.3",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@kompasid/colors": "^1.1.0"
   }
 }
