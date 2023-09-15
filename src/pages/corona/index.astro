@@ -1,0 +1,14 @@
+---
+// imports
+import WidgetCoronaReport from '../../components/widget/CoronaReport.vue'
+
+// datas
+const {size} = Astro.params;
+const response = await fetch(`${import.meta.env.SECRET_WWW_HOST}/api/widget/covid`);
+const data = await response.json();
+const { covid } = data
+
+---
+<body>
+  <WidgetCoronaReport data={covid} />
+</body>

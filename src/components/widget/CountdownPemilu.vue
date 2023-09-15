@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { isMatch } from 'date-fns'
 import { differenceInDays } from 'date-fns'
 import { utcToZonedTime } from 'date-fns-tz'
@@ -78,6 +78,9 @@ const dayCount = (str:string) => {
 
 onMounted(() => {
   interval = setInterval(generateDay, 1000)
+})
+onBeforeUnmount(() => {
+  
 })
 </script>
 <style lang="postcss" scoped>

@@ -1,9 +1,9 @@
 ---
 import WidgetPemilu from '../../components/widget/CountdownPemilu.vue'
-const show = true
+
 const {size} = Astro.params;
 ---
 <body>
   <h1 class="font-bold">requested size is { size }</h1>
-  <WidgetPemilu client:idle />
+  <WidgetPemilu client:load />
 </body>
