@@ -40,7 +40,7 @@
     <!-- end: widget content -->
     <div class="flex flex-col lg:flex-row md:flex mt-2">
       <div ref="link-berita-selengkapnya" class="w-full lg:w-1/5 pb-2">
-        <a :href="`${apiHost}/label/covid-19`" class="text-xs font-bold underline text-brand-1 gtm-home-wgt-covid">
+        <a :href="`${mainSiteHost}/label/covid-19`" class="text-xs font-bold underline text-brand-1 gtm-home-wgt-covid">
           Berita Selengkapnya
         </a>
       </div>
@@ -56,8 +56,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
 import { useDateFormat } from '@vueuse/core'
+
 interface ApiResult {
   "id": number,
   "Hari_Ke": number,
@@ -73,15 +73,18 @@ interface ApiResult {
   "createddate": string,
   "tanggal": string
 }
-
-// this is syntax named: `type-based declaration`
+/** this is syntax named: `type-based declaration`  */
 const props = defineProps<{
   data: ApiResult
 }>()
 
-const apiHost = import.meta.env.SECRET_WWW_HOST
-const updateTime = useDateFormat(props.data.modifieddate ,'d MMMM YYYY HH:mm', { locales: 'id' })
-const error = ref({})
+// datas
+const mainSiteHost = import.meta.env.SECRET_WWW_HOST
+const updateTime = useDateFormat(
+  props.data.modifieddate,
+  'd MMMM YYYY HH:mm',
+  { locales: 'id' }
+)
 
 // functions
 const iterator = (covid:ApiResult) => {
@@ -120,7 +123,6 @@ const cummulativeFormat = (num: number | string) => {
   let toNumber = typeof num === 'string' ? parseInt(num) : num;
   return Math.sign(toNumber) === -1 ? `${toNumber}` : `+ ${toNumber}`;
 }
-
 const formatNumber = (num:number) => {
   return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
 }
